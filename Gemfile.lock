@@ -2,13 +2,13 @@ PATH
   remote: .
   specs:
     redis_rate_limit (0.1.0)
-      redis (~> 4.1.3)
+      redis (>= 3)
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.3)
-    rake (10.0.4)
+    rake (13.0.1)
     redis (4.1.3)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -29,7 +29,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.17)
-  rake (~> 10.0)
+  rake (~> 13.0)
   redis_rate_limit!
   rspec (~> 3.0)
 
