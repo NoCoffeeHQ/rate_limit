@@ -23,7 +23,9 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-rate_limit = new('Twilio', max_rpm: 60, redis: $redis)
+$redis = Redis.new
+
+rate_limit = RedisRateLimit::RateLimit.new('Twilio', max_rpm: 60, redis: $redis)
 
 rate_limite.safe_call do 
   twilio_sdk.send_verification_sms('+123456789')
