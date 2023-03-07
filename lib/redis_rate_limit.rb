@@ -19,17 +19,13 @@ module RedisRateLimit
       @limits.each do |(type, value)|
         next if value.nil? || value == 0
         _topic = "#{topic}-#{type}"
-        current = redis.llen(_topic)
+        current = redis.get(_topic).to_i
         if current >= value
           return [:error, "Too many requests (#{type}: #{value})"]
         else
-          if redis.exists(_topic) == 0
-            redis.multi do
-              redis.rpush(_topic, _topic)
-              redis.expire(_topic, DURATION_IN_SECONDS[type])
-            end
-          else
-            redis.rpushx(_topic, _topic)
+          redis.multi do
+            redis.incr(_topic)
+            redis.expire(_topic, DURATION_IN_SECONDS[type])
           end
         end
       end
@@ -38,7 +34,7 @@ module RedisRateLimit
     def reset
       @limits.each do |(type, _)|
         _topic = "#{topic}-#{type}"
-        redis.lrem(_topic, 0, _topic)
+        redis.set(_topic, 0)
       end
     end
   end

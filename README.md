@@ -1,6 +1,8 @@
 # RedisRateLimit
 
-This gem helps you to respect the ratio limit defined by external services like Twilio or others before your account gets suspended.
+If an application goes beyond quota defined by public APIs, they might ban it. To overcome this issue, developers have to wrap each call to public APIs and make sure they don't make more requests than allowed.
+
+Or in another words, this gem helps you to respect the ratio limit defined by external services like Twilio or others before your account gets suspended.
 
 ## Installation
 
