@@ -37,7 +37,7 @@ RSpec.describe RedisRateLimit::RateLimit do
       end
     end
     context '2 calls within a second, delay of 1s, 2 more calls (exceeding the rpm limit), delay of 1s, one more call (exceeding the rpm limit)' do
-      let(:instance) { described_class.new('MyTask', max_rps: 2, max_rpm: 3, redis: redis) }
+      let(:instance) { described_class.new('AnotherMyTask', max_rps: 2, max_rpm: 3, redis: redis) }
       subject { 5.times.each_with_index.map { |i| sleep(1) if i == 2 || i == 4; instance.safe_call { action.do } } }
       it 'calls only the first 3 actions' do
         expect(action).to receive(:do).exactly(3).and_return(true)

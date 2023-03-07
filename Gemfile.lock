@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redis_rate_limit (0.2.0)
+    nocoffee_redis_rate_limit (0.1.0)
       redis (>= 5)
 
 GEM
@@ -32,8 +32,8 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  nocoffee_redis_rate_limit!
   rake (~> 13.0)
-  redis_rate_limit!
   rspec (~> 3.0)
 
 BUNDLED WITH
