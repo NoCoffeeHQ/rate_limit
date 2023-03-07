@@ -6,7 +6,7 @@ require "redis_rate_limit/version"
 Gem::Specification.new do |spec|
   spec.name          = "redis_rate_limit"
   spec.version       = RedisRateLimit::VERSION
-  spec.authors       = ["Didier Lafforgue Julien Girard"]
+  spec.authors       = ['Didier Lafforgue', 'Julien Girard']
   spec.email         = ['didier@nocoffee.fr']
 
   spec.summary       = %q{This gem is an implementation of https://redis.io/commands/INCR.}
@@ -38,8 +38,7 @@ and make sure they don't make more requests than allowed.}
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_dependency "redis", ">= 3"
+  spec.add_dependency "redis", ">= 5"
 end

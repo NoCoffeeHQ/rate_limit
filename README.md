@@ -1,8 +1,6 @@
 # RedisRateLimit
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/redis_rate_limit`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem helps you to respect the ratio limit defined by external services like Twilio or others before your account gets suspended.
 
 ## Installation
 
@@ -22,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+rate_limit = new('Twilio', max_rpm: 60, redis: $redis)
+
+rate_limite.safe_call do 
+  twilio_sdk.send_verification_sms('+123456789')
+end
+```
 
 ## Development
 

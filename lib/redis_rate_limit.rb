@@ -23,7 +23,7 @@ module RedisRateLimit
         if current >= value
           return [:error, "Too many requests (#{type}: #{value})"]
         else
-          if redis.exists(_topic) == false
+          if redis.exists(_topic) == 0
             redis.multi do
               redis.rpush(_topic, _topic)
               redis.expire(_topic, DURATION_IN_SECONDS[type])
